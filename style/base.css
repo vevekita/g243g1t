@@ -1,8 +1,16 @@
-body{
+body {
     background-color: rgb(151, 202, 202);
 }
-button {
+.btn {
     background: rgb(88, 201, 88);
+    margin-top: 100px;
+    width: 50%;
+    font-size: 40px;
+}
+
+.conteudo {
+    width: 100%;
+    text-align: center;
 }
 
 .tablet {
@@ -37,6 +45,13 @@ button {
         font-size: 60px;
         color: rgb(145, 219, 145);
     }
+    .conteudo{
+        text-align: right;
+    }
+    .btn{
+        margin-top: 0px;
+        font-size: 24px;
+    }
 }
 
 @media (min-width: 1228px) {
@@ -52,4 +67,8 @@ button {
         font-size: 90px;
         color: bisque;
     }
+    .conteudo{
+        text-align: left;
+    }
 }
+
