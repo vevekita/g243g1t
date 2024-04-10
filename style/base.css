@@ -1,6 +1,18 @@
 body {
     background-color: rgb(151, 202, 202);
 }
+#h{
+    font-style: italic;
+    font-size: 90px;
+    color: rgb(128, 128, 248);
+}
+.desp{
+    border: none;
+    width: 50px;
+    color: white;
+    background-color: black;
+    font-size: 32px;
+}
 .btn {
     background: rgb(86, 189, 86);
     width: 100%;
