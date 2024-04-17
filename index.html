@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="./script/script.js"></script>
+    <script src="./script/estruturas.js"></script>
     <link rel="stylesheet" href="./style/base.css">
 </head>
 <body>
@@ -49,7 +50,18 @@
                     <br><br>
                     <button onclick="ligar_alarme()">Ligar Alarme</button>
                 </div>
-                <div id="a4" class="aba4"></div>
+                <div id="a4" class="aba4">
+                    <div class="minha_fila"><span id="fila">Não tem fila</span></div>
+                    <div class="operacoes_fila">
+                        <button onclick="criarFila()">Criar fila</button><br>
+                        <button onclick="removerFila()">Remover fila</button>
+
+                        <div class="adicionar_fila">
+                            Nome:<input type="text" id="nome"><button onclick="inserirElementoFila()">Inserir na fila</button>
+                        </div>
+
+                    </div>
+                </div>
                 <div id="a5" class="aba5"></div>
             </div>
 
