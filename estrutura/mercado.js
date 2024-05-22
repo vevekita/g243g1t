@@ -38,14 +38,65 @@ const caixa1ChamaProximo = () =>{
     let cliente = f1.desenfileirar();
     let tempo = 200;
     if(cliente){
+        document.getElementById("C1").innerHTML = "["+cliente.id + "("+cliente.itens+")]";
         tempo = cliente.itens*1000;
-        setTimeout(caixa1ChamaProximo, tempo);
+        setTimeout(function(){
+            caixa1ChamaProximo();
+        },tempo);
+    }else{
+        document.getElementById("C2").innerHTML = "Aguardando!";
+        if(clientesParaAtender > 0){
+        setTimeout(function(){
+                caixa1ChamaProximo();
+            },gerarItens()*50);
+        }else{
+            document.getElementById("C2").innerHTML = "Fechado!";
+        }
     }
 }
 
+const caixa2ChamaProximo = () =>{
+    let cliente = f1.desenfileirar();
+    let tempo = 200;
+    if(cliente){
+        document.getElementById("C2").innerHTML = "["+cliente.id + "("+cliente.itens+")]";
+        tempo = cliente.itens*1000;
+        setTimeout(function(){
+            caixa2ChamaProximo();
+        },tempo);
+    }else{
+        if(clientesParaAtender > 0){
+            document.getElementById("C2").innerHTML = "Caixa aguardando...";
+        setTimeout(function(){
+                caixa2ChamaProximo();
+            },gerarItens()*50);
+        }else{
+            document.getElementById("C2").innerHTML = "Caixa fechado...";
+        }
+    }
+}
+
+
+let maxClientes = 50;
+const filaInicial = 10;
+let clientesParaAtender = maxClientes - filaInicial;
+let idCliente = filaInicial + 1;
+
+const entrarNaFila = () =>{
+    if(clientesParaAtender > 0){
+        f1.enfileirar(Cliente("C"+idCliente,gerarItens()));
+        clientesParaAtender--;
+        idCliente++;
+        setTimeout(entrarNaFila, gerarItens() * 1000);
+    }
+    
+}
+
 (function(){
-    for(let i=1; i<=15; i++){
+    for(let i=1; i<=filaInicial; i++){
         f1.enfileirar(Cliente("C"+i,gerarItens()));
     }
     caixa1ChamaProximo();
+    caixa2ChamaProximo();
+    entrarNaFila();
 })();
